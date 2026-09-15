@@ -74,16 +74,6 @@ COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf \
     && mkdir -p /mnt/extra-addons
     
-
-# Clonando repositórios OCA necessários
-RUN git clone --depth=1 --branch=16.0 https://github.com/OCA/l10n-brazil.git /mnt/extra-addons/l10n-brazil && \
-    git clone --depth=1 --branch=16.0 https://github.com/OCA/product-attribute.git /mnt/extra-addons/product-attribute && \
-    git clone --depth=1 --branch=16.0 https://github.com/OCA/account-payment.git /mnt/extra-addons/account-payment && \
-    git clone --depth=1 --branch=16.0 https://github.com/OCA/bank-payment.git /mnt/extra-addons/bank-payment && \
-    pip3 install --no-cache-dir -r /mnt/extra-addons/l10n-brazil/requirements.txt && \
-    sed -i 's/list | tuple/(list, tuple)/g' /mnt/extra-addons/l10n-brazil/l10n_br_base/models/party_mixin.py
-
-
 # Ajusta as permissões dos arquivos e define os volumes
 RUN chown -R odoo /mnt/extra-addons
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]

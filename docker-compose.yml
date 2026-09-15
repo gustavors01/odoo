@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: postgres:15
-    container_name: odoobr_db
+    container_name: odoo_db
     environment:
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo
@@ -13,8 +13,8 @@ services:
     restart: always
 
   odoo:
-    image: odoobr:latest
-    container_name: odoobr_odoo
+    image: odoo:latest
+    container_name: odoo
     depends_on:
       - db
     ports:
@@ -23,7 +23,7 @@ services:
     volumes:
       - odoo_data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
-      - ./addons:/mnt/extra-addons/custom
+      - ./addons:/mnt/extra-addons
     restart: always
 
 volumes:
