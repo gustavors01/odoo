@@ -13,6 +13,7 @@ services:
     restart: always
 
   odoo:
+    build: .
     image: odoo:latest
     container_name: odoo
     depends_on:
