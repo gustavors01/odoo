@@ -4,6 +4,7 @@ lxml<5.0.0
 brazilcep
 brazilfiscalreport
 email-validator
+pyOpenSSL==22.1.0
 erpbrasil-base>=2.4.2
 erpbrasil.assinatura
 erpbrasil.edoc
